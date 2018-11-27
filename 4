@@ -1,0 +1,175 @@
+int mission4(aliceShape, bobShape, rounds)
+{
+	int i,aliceWins=0,bobWins=0,ties=0;
+	for (i = 0;i != rounds;i++)
+	{
+		if ((aliceShape == ROCK && bobShape == LIZARD) || (aliceShape == SPOCK && bobShape == ROCK) ||
+			(aliceShape == PAPER && bobShape == ROCK) || (aliceShape == PAPER && bobShape == SPOCK) ||
+			(aliceShape == SCISSORS && bobShape == PAPER) || (aliceShape == SCISSORS && bobShape == LIZARD) ||
+			(aliceShape == LIZARD && bobShape == SPOCK) || (aliceShape == LIZARD && bobShape == PAPER))
+		{
+			if (aliceShape == ROCK && bobShape == LIZARD)
+			{
+				printf("Rock > Lizard\n");
+			}
+			else if (aliceShape == PAPER && bobShape == ROCK)
+			{
+				printf("Paper > Rock\n");
+			}
+			else if (aliceShape == PAPER && bobShape == SPOCK)
+			{
+				printf("Paper > Spock\n");
+			}
+			else if (aliceShape == SCISSORS && bobShape == PAPER)
+			{
+				printf("Scissors > Paper\n");
+			}
+			else if (aliceShape == SCISSORS && bobShape == LIZARD)
+			{
+				printf("Scissors > Lizard\n");
+			}
+			else if (aliceShape == SPOCK && bobShape == ROCK)
+			{
+				printf("Spock > Rock\n");
+			}
+			else if (aliceShape == LIZARD && bobShape == SPOCK)
+			{
+				printf("Lizard > Spock\n");
+			}
+			else
+			{
+				printf("Lizard > Paper\n");
+			}
+			aliceWins++;
+			if (bobShape == SPOCK)
+			{
+				bobShape = PAPER;
+			}
+			else
+			{
+				bobShape = SPOCK;
+			}
+		}
+		else if (aliceShape == bobShape)
+		{
+			if (aliceShape == LIZARD && bobShape == LIZARD)
+			{
+				printf("Lizard = Lizard\n");
+			}
+			else if (aliceShape == PAPER && bobShape == PAPER)
+			{
+				printf("Paper = Paper\n");
+			}
+			else if (aliceShape == ROCK && bobShape == ROCK)
+			{
+				printf("Rock = Rock\n");
+			}
+			else
+			{
+				printf("Spock = Spock\n");
+			}
+			
+			ties++;
+			if (aliceShape == ROCK)
+			{
+				aliceShape = PAPER;
+			}
+			else if (aliceShape == PAPER)
+			{
+				aliceShape = SCISSORS;
+			}
+			else if (aliceShape == SCISSORS)
+			{
+				aliceShape = SPOCK;
+			}
+			else if (aliceShape == SPOCK)
+			{
+				aliceShape = LIZARD;
+			}
+			else
+			{
+				aliceShape = ROCK;
+			}
+			if (bobShape == SPOCK)
+			{
+				bobShape = LIZARD;
+			}
+			else
+			{
+				bobShape = SPOCK;
+			}
+
+		}
+		else
+		{
+			if (bobShape == ROCK && aliceShape == SCISSORS)
+			{
+				printf("Scissors < Rock\n");
+			}
+			else if (bobShape == ROCK && aliceShape == LIZARD)
+			{
+				printf("Lizard < Rock\n");
+			}
+			else if (bobShape == PAPER && aliceShape == ROCK)
+			{
+				printf("Rock < Paper\n");
+			}
+			else if (bobShape == PAPER && aliceShape == SPOCK)
+			{
+				printf("Spock < Paper\n");
+			}
+			else if (bobShape == SPOCK && aliceShape == SCISSORS)
+			{
+				printf("Scissors < Spock\n");
+			}
+			else if (bobShape == SPOCK && aliceShape == ROCK)
+			{
+				printf("Rock < Spock\n");
+			}
+			else if (bobShape == LIZARD && aliceShape == SPOCK)
+			{
+				printf("Spock < Lizard\n");
+			}
+			else
+			{
+				printf("Paper < Lizard\n");
+			}
+			bobWins++;
+			if (bobShape == ROCK)
+			{
+				aliceShape = PAPER;
+				bobShape = SPOCK;
+			}
+			else if (bobShape == PAPER)
+			{
+				aliceShape = SCISSORS;
+				bobShape = SPOCK;
+			}
+			else if (bobShape == SPOCK)
+			{
+				aliceShape = LIZARD;
+				bobShape = ROCK;
+			}
+			else
+			{
+				aliceShape = ROCK;
+				bobShape = SPOCK;
+			}
+			
+		}
+	}
+	if (aliceWins > bobWins)
+	{
+		printf("Alice wins, by winning %d game(s) and tying %d game(s)\n", aliceWins, ties);
+	}
+	else if (aliceWins == bobWins)
+	{
+		printf("Alice and Bob tie, each winning %d game(s) and tying %d game(s)\n", aliceWins, ties);
+		
+	}
+	else
+	{
+		printf("Bob wins, by winning %d game(s) and tying %d game(s)\n", bobWins, ties);
+	}
+	return 0;
+}
